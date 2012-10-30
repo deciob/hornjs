@@ -16,7 +16,7 @@ onDomReady( function() {
 
 	//var test_el = e.div( {"className": "totoro"}, e.div() );
 
-	console.log(horn, test_el);
+	//console.log(horn, test_el);
 
 
 } );

@@ -15,6 +15,12 @@ var horn = (function (global) {
     }
 
 	function toSeq(value, begin) {
+		// From MDN:
+		// Slice does not alter the original array, but returns a new 
+		// "one level deep" copy that contains copies of the elements 
+		// sliced from the original array.
+		// Slice method can also be called to convert Array-like objects / 
+		// collections to a new Array.
 		begin = begin || 0;
         if (toString.call(value) === "[object Array]") { return value; }
         if (isSeq(value)) { return slice.call(value, begin); }
@@ -30,8 +36,6 @@ var horn = (function (global) {
     }
 
 	function makePartial(fn) {
-		// Using slice.call to make arguments a proper array.
-		// Stripping the first argument because it's the function itself.
 		var stored_args = toSeq(arguments, 1); // slice.call(arguments, 1);
 		return function() {
 			var new_args = toSeq(arguments), //slice.call(arguments),
