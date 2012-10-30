@@ -2,26 +2,25 @@
 
 var horn = (function (global) {
 
-	"use strict";
+    "use strict";
 
-	var slice = Array.prototype.slice;
+    var slice = Array.prototype.slice;
 
 
-	function isSeq(seq) {
+    function isSeq(seq) {
         return !!seq &&
             typeof seq === "object" &&
             typeof seq.length === "number" &&
             !seq.tagName;
     }
 
-	function toSeq(value, begin) {
-		// From MDN:
-		// Slice does not alter the original array, but returns a new 
-		// "one level deep" copy that contains copies of the elements 
-		// sliced from the original array.
-		// Slice method can also be called to convert Array-like objects / 
-		// collections to a new Array.
-		begin = begin || 0;
+    function toSeq(value, begin) {
+        // From MDN:
+        // Slice does not alter the original array, but returns a new 
+        // "one level deep" copy...
+        // Slice method can also be called to convert Array-like objects / 
+        // collections to a new Array.
+        begin = begin || 0;
         if (toString.call(value) === "[object Array]") { return value; }
         if (isSeq(value)) { return slice.call(value, begin); }
         if (typeof value === "undefined" || value === null) { return []; }
@@ -35,16 +34,16 @@ var horn = (function (global) {
         }
     }
 
-	function makePartial(fn) {
-		var stored_args = toSeq(arguments, 1); // slice.call(arguments, 1);
-		return function() {
-			var new_args = toSeq(arguments), //slice.call(arguments),
-			    args = stored_args.concat(new_args);
-			return fn.apply(null, args);
-		}
-	}
+    function makePartial(fn) {
+        var stored_args = toSeq(arguments, 1); // slice.call(arguments, 1);
+        return function() {
+            var new_args = toSeq(arguments), //slice.call(arguments),
+                args = stored_args.concat(new_args);
+            return fn.apply(null, args);
+        }
+    }
 
-	function prop(name) {
+    function prop(name) {
         return function (object) {
             return object[name];
         };
@@ -72,9 +71,9 @@ var horn = (function (global) {
         }
     }
 
-	horn = {};
+    horn = {};
 
-	var el = function (tagName, attrProps, content) {
+    var el = function (tagName, attrProps, content) {
         var element = document.createElement(tagName);
         setProp(attrProps, element);
         append(content || [], element);
@@ -92,7 +91,7 @@ var horn = (function (global) {
     horn.el = el;
 
 
-	return horn;
+    return horn;
 
 }(this));
 
