@@ -10,14 +10,42 @@
 <body>
     
     <div id="hook_point"></div>
+    <div id="page-container"></div>
+
+    <script src="js/vendor/require.js"></script>
+    <script>
+    // Configure the AMD module loader
+    requirejs.config({
+      // The path where your JavaScripts are located
+      baseUrl: './js/',
+      // Specify the paths of vendor libraries
+      paths: {
+        ondomready: 'vendor/ondomready',
+        nut: 'vendor/nut'
+      },
+      // Nut per default,
+      // so we need to use the AMD wrapping of RequireJS
+      shim: {
+        nut: {
+          exports: 'nut'
+        }
+      }
+      // For easier development, disable browser caching
+      // Of course, this should be removed in a production environment
+      , urlArgs: 'bust=' +  (new Date()).getTime()
+    });
+    
+    // Bootstrap the application
+    require(['nut', 'horn'], function (nut, horn) {
+
+        
+        var e = horn.dom.el;
+        var el = e("div", {"className": "totoro"}, e("div"));
+        console.log('horn', nut, horn, el);
+      
+    });
+    </script>
 
 
-
-    <script src="js/vendor/ondomready.js"></script>
-    <script src="js/vendor/underscore.js"></script>
-    <script src="js/vendor/nut.js"></script>
-    <script src="js/vendor/cull.js"></script>
-    <script src="js/horn.js"></script>
-    <script src="js/testing.js"></script>
 </body>
 </html>
