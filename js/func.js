@@ -7,6 +7,14 @@ function () {
 
     var slice = Array.prototype.slice;
 
+    function _assert(pred, msg) {
+        if (!pred) { throw new TypeError(msg); }
+    }
+
+    function _refute(pred, msg) {
+        _assert(!pred, msg);
+    }
+
     function isSeq(seq) {
         return !!seq &&
             typeof seq === "object" &&
@@ -58,13 +66,24 @@ function () {
         }
     }
 
+    function map(func, seq) {
+        var i, l, new_seq = [];
+        _assert(isSeq(seq));
+        for (i=0, l=seq.length; i < l; i++) {
+            new_seq.push( func(seq[i]) );
+        }
+        return new_seq;
+    }
+
+
     return {
         isSeq: isSeq,
         toSeq: toSeq,
         doall: doall,
         makePartial: makePartial,
         prop: prop,
-        setProp: setProp
+        setProp: setProp,
+        map: map
     };
 
 });
