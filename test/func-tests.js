@@ -1,30 +1,31 @@
-define(["js/func"], function(Func) {
+define(["js/func"], function(f) {
 
     buster.testCase("func.seq", {
 
         "An array of numbers is a sequence" : function() {
             var numbers = [1, 2, 5, 236, 9];
-            assert.equals(Func.isSeq(numbers), true);
+            assert.equals(f.isSeq(numbers), true);
         },
 
         "An string is not a sequence" : function() {
             var letters = "totoro";
-            assert.equals(Func.isSeq(letters), false);
+            assert.equals(f.isSeq(letters), false);
         },
 
         "Arguments is a sequence too" : function() {
-            var f = function (a, b) {
-                assert.equals(Func.isSeq(arguments), true);
+            var fun = function (a, b) {
+                assert.equals(f.isSeq(arguments), true);
             };
-            f(1,2);
+            fun(1,2);
         },
 
         "toSeq(undefined) should return an empty array": function() {
             var t;
-            assert.equals(Func.toSeq(t), []);
+            assert.equals(f.toSeq(t), []);
         }
 
     });
+
 
     buster.testCase("func.map", {
 
@@ -39,11 +40,21 @@ define(["js/func"], function(Func) {
                 double = function (number) {
                     return number * 2;
                 };
-            assert.equals( Func.map(double, numbers), doubles);
+            assert.equals( f.map(double, numbers), doubles);
         }
 
     });
 
 
+    buster.testCase("func.prop", {
+
+        "Director should have films as property": function() {
+            var director = { name: "Hayao Miyazaki" },
+                films = { films: ["My Neighbor Totoro", "Castle in the Sky"] };
+            f.setProp(films, director);
+            assert.equals( director.films, films.films);
+        }
+
+    });
 
 });
