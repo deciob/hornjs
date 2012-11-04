@@ -2,8 +2,8 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>My project</title>
-    <meta name="description" content="This is an HTML5 template">
+    <title>hornjs</title>
+    <meta name="description" content="hornjs, derived from culljs">
     <meta name="author" content="deciob">
   <!--<link rel="stylesheet" href="css/styles.css?v=1.0">-->
 </head>
@@ -23,7 +23,7 @@
         ondomready: 'vendor/ondomready',
         nut: 'vendor/nut'
       },
-      // Nut not supported per default,
+      // Nut is not supported per default,
       // so we need to use the AMD wrapping of RequireJS
       shim: {
         nut: {
@@ -35,14 +35,16 @@
       , urlArgs: 'bust=' +  (new Date()).getTime()
     });
     
-    // Bootstrap the application
+    // Bootstrap the application and give a simple example
     require(['nut', 'horn'], function (nut, horn) {
 
+        var e = horn.dom.el,
+            body = nut("body"),
+            in_el = e("span", {"className": "totoro"}, "Hayao Miyazaki"),
+            out_el = e("div", {}, ["My Neighbor Totoro, by ", in_el, "."]);
         
-        var e = horn.dom.el;
-        var el = e("div", {"className": "totoro"}, e("div"));
-        //console.log('horn', nut, horn, el);
-      
+        body[0].appendChild(out_el);
+
     });
     </script>
 

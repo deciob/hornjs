@@ -25,6 +25,12 @@ function (f) {
         return element;
     };
     
+    // `f.doall` takes 2 arguments.
+    // The first argument is a function that gets called for every element in 
+    // the sequence passed as the second argument. 
+    // The function sets a property on the `el` function. The property is a
+    // partial application of `el` itself, with its first argument fixed to
+    // the tag name from the sequence.
     f.doall(function (tagName) { el[tagName] = f.makePartial(el, tagName); }, [
         "a", "abbr", "acronym", "address", "area", "article", "aside", "audio",
         "b", "bdi", "bdo", "big", "blockquote", "body", "br", "button",

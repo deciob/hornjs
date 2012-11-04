@@ -1,4 +1,3 @@
-// ripped off from: https://github.com/magnars/culljs
 
 define([
     'func', 
@@ -17,3 +16,14 @@ function (f, dom) {
 //    return horn;
 //  });
 //}
+
+
+//!function (definition) {
+//    if (typeof define === "function" && define.amd) {
+//        // Register as an AMD module.
+//        define(definition);
+//    } else {
+//        // Browser globals
+//        window.onDomReady = definition();
+//    }
+//}(function() {
