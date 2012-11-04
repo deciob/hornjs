@@ -1,4 +1,4 @@
-//Calling define with a dependency array and a factory function
+
 define([
 ], 
 function () {
@@ -68,7 +68,6 @@ function () {
 
     function map(func, seq) {
         var i, l, new_seq = [];
-        _assert(isSeq(seq));
         for (i=0, l=seq.length; i < l; i++) {
             new_seq.push( func(seq[i]) );
         }

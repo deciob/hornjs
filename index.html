@@ -23,7 +23,7 @@
         ondomready: 'vendor/ondomready',
         nut: 'vendor/nut'
       },
-      // Nut per default,
+      // Nut not supported per default,
       // so we need to use the AMD wrapping of RequireJS
       shim: {
         nut: {
@@ -41,7 +41,7 @@
         
         var e = horn.dom.el;
         var el = e("div", {"className": "totoro"}, e("div"));
-        console.log('horn', nut, horn, el);
+        //console.log('horn', nut, horn, el);
       
     });
     </script>
