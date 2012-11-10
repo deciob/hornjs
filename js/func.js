@@ -74,6 +74,18 @@ function () {
         return new_seq;
     }
 
+    function compose(funcs, context) {
+        var funcs = toSeq(funcs);
+        return function () {
+            var result = arguments,
+                i = funcs.length;
+            while (i--) {
+                result = [funcs[i].apply(context || this, result)];
+            }
+            return result[0];
+        };
+    }
+
 
     return {
         isSeq: isSeq,
@@ -82,7 +94,8 @@ function () {
         makePartial: makePartial,
         prop: prop,
         setProp: setProp,
-        map: map
+        map: map,
+        compose: compose
     };
 
 });

@@ -57,4 +57,21 @@ define(["js/func"], function(f) {
 
     });
 
+
+    buster.testCase("func.compose", {
+
+        // Function composition is the application of a result 
+        // of a function as input to another function.
+
+        "Pass 5, compose from last to first and expect 40": function() {
+            var square = function (x) { return x * x },
+                double = function (x) { return 2 * x },
+                substractTen = function (x) { return x - 10 },
+                comp = f.compose([substractTen, double, square]);
+            assert.equals( comp(5), 40);
+        }
+
+    });
+
+
 });

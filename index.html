@@ -38,12 +38,18 @@
     // Bootstrap the application and give a simple example
     require(['nut', 'horn'], function (nut, horn) {
 
-        var e = horn.dom.el,
+        var e = horn.dom.el, f = horn.f,
             body = nut("body"),
             in_el = e("span", {"className": "totoro"}, "Hayao Miyazaki"),
             out_el = e("div", {}, ["My Neighbor Totoro, by ", in_el, "."]);
         
         body[0].appendChild(out_el);
+
+        var square = function (x) { return x * x },
+            double = function (x) { return 2 * x },
+            substractTen = function (x) { return x - 10 },
+            comp = f.compose([substractTen, double, square]);
+        console.log(comp(5))
 
     });
     </script>
