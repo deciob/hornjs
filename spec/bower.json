@@ -1,0 +1,9 @@
+{
+  "dependencies": {
+    "curl": "https://raw.github.com/cujojs/curl/master/dist/curl-with-js-and-domReady/curl.js",
+    "mocha": "1.9.0",
+    "chai": "1.6.0",
+    "sinon": "https://raw.github.com/cjohansen/sinon-web/master/releases/sinon.js",
+    "sinon-chai": "2.4.0"
+  }
+}
