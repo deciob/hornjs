@@ -17,7 +17,6 @@ curl(cfg, [
   "horn"
 ]).then (chai, sinonChai, specData, horn) ->
 
-    
   should = chai.should()
 
   describe 'max', ->
